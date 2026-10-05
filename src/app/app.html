@@ -1,0 +1,27 @@
+<div class="task-board">
+  <h1>My Task Board</h1>
+
+  @if (isLoading) {
+    <p>Loading your tasks...</p>
+  } @else {
+    <ul>
+      @for (task of taskList; track task.id) {
+        <li>
+          <strong>{{ task.title }}</strong>
+          
+          @if (task.isComplete) {
+            <span> (Done)</span>
+          } @else {
+            <span> (Pending)</span>
+          }
+
+          @if (task.assignee) {
+            <p>Assigned to: {{ task.assignee }}</p>
+          }
+        </li>
+      } @empty {
+        <p>No tasks found! You have free time.</p>
+      }
+    </ul>
+  }
+</div>
